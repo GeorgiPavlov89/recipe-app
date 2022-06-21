@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import {Splide, SplideSlide} from "@splidejs/react-splide"
 import '@splidejs/react-splide/css';
+import {Link} from 'react-router-dom'
+
 export default function Popular() {
     const [popular, setPopular] = useState([]);
+
 
     useEffect(() => {
         getPopular();
@@ -36,14 +39,23 @@ export default function Popular() {
                     pagination: false,
                     drag: "free",
                     gap: "5rem",
+                    breakpoints: {
+                        
+                             640: {
+                            perPage: 3,
+                                
+                    }
+          }
                 }}>
                     {popular.map((recipe) => {
                         return (
                             <SplideSlide key={recipe.id}>
                         <Card>
-                            <p>{recipe.title}</p>
-                            <img src={recipe.image} alt={recipe.title} />
-                            <Gradient />
+                            <Link to={"/recipe/" + recipe.id}>
+                                <p>{recipe.title}</p>
+                                <img src={recipe.image} alt={recipe.title} />
+                                <Gradient />
+                            </Link>
                         </Card>
                         </SplideSlide>
                         )
@@ -57,23 +69,21 @@ export default function Popular() {
 }
 
 const Wrapper = styled.div `
-margin: 4rem 0rem;
+
+   margin-bottom: 3rem;
+@media (min-width: 45rem) {
+    margin: 4rem 0rem;
+}
+
 `;
 
 const Card = styled.div `
-    min-height: 25rem;
+    min-height: 15rem;
+    min-width: 10rem;
     border-radius: 2rem;
     overflow: hidden;
     position: relative;
 
-    img {
-        border-radius: 2rem;
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
     p {
         position: absolute;
         z-index:10;
@@ -84,13 +94,31 @@ const Card = styled.div `
         width: 100%;
         text-align: center;
         font-weight: 600;
-        font-size: 1rem;
+        font-size: 0.7rem;
         height: 40%;
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
+img {
+    border-radius: 1rem;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+}
+@media (min-width: 45rem) {
+    min-height: 25rem;
+    border-radius: 2rem;
+    overflow: hidden;
+    position: relative;
+
+    p {
+        font-size: 1rem;
+    }
+}
 `
 const Gradient = styled.div `
     z-index:3;

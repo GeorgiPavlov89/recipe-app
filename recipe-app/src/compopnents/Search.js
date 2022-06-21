@@ -29,7 +29,16 @@ export default function Search() {
 
 
 const FormStyle = styled.form `
+
+@media (min-width: 45rem) {
+   margin: 0rem 0rem;
+}
+@media (min-width: 70rem) {
+    margin: 0rem 10rem;
+}
+@media (min-width: 90rem) {
     margin: 0rem 20rem;
+}
     
     div {
         position: relative;
@@ -45,7 +54,7 @@ const FormStyle = styled.form `
         border: none;
         border-radius: 1rem;
         outline: none;
-        width: 100%;
+        width: 93%;
     }
 
     svg {

@@ -1,15 +1,21 @@
 import Veggie from '../compopnents/Veggie';
 import Popular from '../compopnents/Popular';
+import {motion} from 'framer-motion'
 
 
 import React from 'react'
 
 export default function Home() {
   return (
-    <div>
+    <motion.div
+       animate={{opacity: 1,}}
+        initial={{opacity: 0}}
+        exit={{opacity: 0}}
+        transition={{duration: 0.5}}
+    >
         <Veggie />
         <Popular />
         
-    </div>
+    </motion.div>
   )
 }
