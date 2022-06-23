@@ -58,8 +58,9 @@ export default function Recipe() {
 }
 
 const DetailsWrapper = styled(motion.div)`
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+    justify-content: center;
     img {
         width:100%;
     }
@@ -70,7 +71,12 @@ const DetailsWrapper = styled(motion.div)`
     h3 {
         font-size:1rem;
     }
-    @media (min-width: 45rem) {
+    @media screen and (min-width: 35rem) {
+        
+  flex-direction: column;
+  
+    }
+    @media screen and (min-width: 72.5rem) {
         
         .active {
         background: linear-gradient(35deg, #494949, #313131);
@@ -121,9 +127,13 @@ const Info = styled.div`
     height: 25rem;
     flex-wrap: wrap;
     margin-bottom: 3rem;
-    @media (min-width: 45rem){
+    margin-left: 2rem;
+   
+    @media (min-width: 72.5rem){
         margin-left: 10rem;
         display: block;
     }
+
+    
     
 `
